@@ -239,7 +239,7 @@ async def change_password():
 
 @app.route('/Preferences.html', methods=["GET", "POST"])
 @login_required
-def preferences():
+async def preferences():
     """Preferences webpage.
 
     :return:
@@ -249,7 +249,7 @@ def preferences():
 
 
 @app.route('/Contact.html', methods=["GET"])
-def contact():
+async def contact():
     """Contact information for the development team.
 
     :return:

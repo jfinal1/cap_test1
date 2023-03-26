@@ -1,1 +1,2 @@
 Flask
+quart==0.15.1

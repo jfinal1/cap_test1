@@ -185,7 +185,7 @@ def logout():
 
 @app.route("/change_password.html", methods=["GET", "POST"])
 @login_required
-def change_password():
+async def change_password():
     """Change Password.
 
     :return:

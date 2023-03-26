@@ -20,7 +20,7 @@ app = Quart(__name__)
 """route the home page to the root URL"""
 
 @app.route("/")
-
+@app.route('templates/HomePage.html', methods=['GET', 'POST'])
 def home_page():
     """Home Page.
 

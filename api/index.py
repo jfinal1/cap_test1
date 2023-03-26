@@ -21,7 +21,6 @@ app = Quart(__name__)
 
 @app.route("/")
 
-@app.route('HomePage.html', methods=['GET', 'POST'])
 def home_page():
     """Home Page.
 

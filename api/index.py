@@ -77,7 +77,7 @@ class ChangePassForm(Form):
 
 
 @app.route('/Signup.html', methods=['GET', 'POST'])
-def register():
+async def register():
     """Registration Page for users.
 
     :return:

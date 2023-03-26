@@ -113,7 +113,7 @@ async def register():
 
 
 @app.route('/login.html', methods=["GET", "POST"])
-def login():
+async def login():
     """Benefits homepage for CRNAs that want to transition to 1099 work.
 
     :return:
@@ -124,7 +124,7 @@ def login():
         d_f = pd.read_csv(r'C:\capstone\templates\accounts.csv')
         for i, user in enumerate(d_f.username):
             if await request.form['username'] == str(user) and \
-                    sha256_crypt.verify(await request.form['password'], d_f.password[i]):
+                    sha256_crypt.verify(request.form['password'], d_f.password[i]):
                 session['logged_in'] = True
                 session['username'] = await request.form['username']
                 flash('You are logged in as ' + str(user))

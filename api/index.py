@@ -29,7 +29,7 @@ def home_page():
     #if session['logged_in'] = True:
         #session.clear()
         #FIRSTVISIT = False
-    return await render_template('HomePage.html', date=datetime.datetime.now())
+    return render_template('templates/HomePage.html', date=datetime.datetime.now())
 
 
 class RegistrationForm(Form):

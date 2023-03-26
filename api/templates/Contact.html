@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+</head>
+<body>
+    <h1>Team Members</h1>
+    <h2>...</h2>
+    <div class="Contact">
+        <ul>
+            <li>Project Manager, API Dev:   Issac Olmedo</li>
+            <li>UI Dev:                     Asia Misner</li>
+            <li>Back-End Dev:               Zachary Callahan</li>
+            <li>Website Dev:                Lucas Cichorski</li>
+            <li>      Email: weatherwise.dev@proton.me      </li>
+        </ul>
+    </div>
+
+    <h3>Links</h3>
+    <div class="links">
+        <ul>
+            <li><a href="/HomePage.html">Home Page</a></li>
+            <li><a href="/Register.html">Register</a></li>
+            <li><a href="/login.html">Login</a></li>
+            <li><a href="/change_password.html">Change Password</a></li>
+            <li><a href="/logout.html">Logout</a></li>
+            <li><a href="/Requirements.html">Requirements</a></li>
+        </ul>
+    </div>
+
+    <!--Display the date passed from python-->
+    <p>Today is {{date}}</p>
+</body>
+</html>

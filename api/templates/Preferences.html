@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Preferences</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='sunny.ico') }}">
+</head>
+<body>
+    <h1>WEATHERWISE</h1>
+    <img src="../static/images/IMG_6325.JPG"/>
+
+    <h2>Welcome Firstname Lastname</h2>
+    <p>Below are the fields required fields to fill out to ensure your weather
+    is <br> delivered to you every morning. Please fill them out and select save when complete.</p>
+    <div class="Preferences">
+        <ol>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+            <li>Graduate of an accredited CRNA program</li>
+            <li><a href="https://www.nbcrna.com/initial-certification">Board Certified </a> </li>
+            <li><a href="https://cpr.heart.org/en/courses/basic-life-support-course-options">BLS(Basic Life Support)</a></li>
+            <li><a href="https://cpr.heart.org/en/courses/advanced-cardiovascular-life-support-course-options">ACLS(Advanced Cardiopulmonary Life Support)</a></li>
+            <li><a href="https://egov.maryland.gov/businessexpress">Establish business corporation</a></li>
+            <li><a href="https://www.aana.com/insurance">Malpractice Insurance</a></li>
+        </ol>
+    </div>
+
+    <h3>Requirements Checklist</h3>
+    <div>
+        <table>
+            <tr>
+                <td><img src="../static/images/CRNA_TrainingAndEducation.PNG"></td>
+                <td>Completed Date</td>
+                <td>Renewal Date</td>
+            </tr>
+            <tr>
+                <td>Graduate of an accredited CRNA program</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Board Certified</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>BLS(Basic Life Support)</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>ACLS(Advanced Cardiopulmonary Life Support)</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Establish business corporation</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Malpractice Insurance</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
+    <h5>Links</h5>
+    <div class="links">
+        <ul>
+            <li><a href="/HomePage.html">Home Page</a></li>
+            <li><a href="/Register.html">Register</a></li>
+            <li><a href="/change_password.html">Change Password</a></li>
+            <li><a href="/logout.html">Logout</a></li>
+            <li><a href="/Benefits.html">Benefits</a></li>
+        </ul>
+    </div>
+
+    <!--Display the date passed from python-->
+    <p>Today is {{date}}</p>
+</body>
+</html>

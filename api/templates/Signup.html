@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "layout.html" %}
+{% block body %}
+<head>
+    <meta charset="UTF-8">
+    <title> Sign Up </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='sunny.ico') }}">
+</head>
+<body>
+<img src="../static/images/IMG_8007.jpg"/>
+<div class="container">
+    <h4>Sign Up</h4>
+    <br>
+    {% from "_formhelpers.html" import render_field %}
+    <form method="post" action="/Signup.html">
+        <dl>
+            {{render_field(form.username)}}
+            {{render_field(form.password)}}
+            {{render_field(form.confirm)}}
+            {{render_field(form.email)}}
+        </dl>
+        <p><input type=submit value=Enter></p>
+    </form>
+</div>
+<h5>Links</h5>
+    <div class="links">
+        <ul>
+            <li><a href="/HomePage.html">Home Page</a></li>
+            <li><a href="/login.html">Login</a></li>
+            <li><a href="/logout.html">logout</a></li>
+            <li><a href="/Requirements.html">Requirements</a></li>
+        </ul>
+    </div>
+
+</body>
+{% endblock %}
+</html>
+

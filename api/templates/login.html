@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "layout.html" %}
+{% block body %}
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <br>
+    <h4>Please Login</h4>
+    <br>
+    <form action="" class="form-inline" method="post">
+        <input type="text" class="form-control"
+        placeholder="Username" name="username"
+        value="{{request.form.username}}">
+        <input type="password" class="form-control"
+        placeholder="Password" name="password"
+        value="{{request.form.password}}">
+        <input class="btn btn-default" type="submit"
+        value="Login">
+    </form>
+</div>
+<h5>Links</h5>
+    <div class="links">
+        <ul>
+            <li><a href="/HomePage.html">Home Page</a></li>
+            <li><a href="/Register.html">Register</a></li>
+            <li><a href="/change_password.html">Change Password</a></li>
+            <li><a href="/Benefits.html">Benefits</a></li>
+            <li><a href="/Requirements.html">Requirements</a></li>
+        </ul>
+    </div>
+</body>
+{% endblock %}
+</html>

@@ -5,19 +5,23 @@
 """
 
 import datetime
-import gc
+"""import gc"""
 from functools import wraps
-from flask import Flask, flash, render_template, request, redirect, url_for, session
+"""import the Quart library instead of Flask"""
+from quart import Quart, flash, render_template, request, redirect, url_for, session
 import pandas as pd
 from wtforms import Form, TextAreaField, PasswordField, validators
 from wtforms.validators import InputRequired
 from passlib.hash import sha256_crypt
 
-app = Flask(__name__)
+"""create an ASGI app instance instead of a WSGI app instance"""
+app = Quart(__name__)
 
+"""route the home page to the root URL"""
 
-@app.route('/')
-@app.route('/HomePage.html', methods=['GET', 'POST'])
+@app.route("/")
+
+@app.route('HomePage.html', methods=['GET', 'POST'])
 def home_page():
     """Home Page.
 
@@ -26,7 +30,7 @@ def home_page():
     #if session['logged_in'] = True:
         #session.clear()
         #FIRSTVISIT = False
-    return render_template('HomePage.html', date=datetime.datetime.now())
+    return await render_template('HomePage.html', date=datetime.datetime.now())
 
 
 class RegistrationForm(Form):
@@ -84,7 +88,7 @@ def register():
     it contains. Then searches the username csv to see if the username has
     already been used, if so, prompt the user to enter a different username.
     If all checks out, append the account information to the users.csv file."""
-    form = RegistrationForm(request.form)
+    form = RegistrationForm(await request.form)
     if request.method == "POST" and form.validate():
         username = form.username.data
         d_f = pd.read_csv(r'C:\capstone\templates\accounts.csv')
@@ -98,15 +102,15 @@ def register():
             print(username)
             print(user)
             if str(username) == str(user[1]):
-                flash("That username is already taken, please choose another.")
-                return render_template('Signup.html', form=form)
+                await flash("That username is already taken, please choose another.")
+                return await render_template('Signup.html', form=form)
         temp_df.to_csv(r'C:\capstone\templates\accounts.csv',
                        mode='a', index=False, header=False)
-        flash("Thanks for registering!")
+        await flash("Thanks for registering!")
         session["logged_in"] = True
         session["username"] = username
         return redirect(url_for('home_page'))
-    return render_template("Signup.html", form=form)
+    return await render_template("Signup.html", form=form)
 
 
 @app.route('/login.html', methods=["GET", "POST"])
@@ -120,22 +124,22 @@ def login():
     if request.method == "POST":
         d_f = pd.read_csv(r'C:\capstone\templates\accounts.csv')
         for i, user in enumerate(d_f.username):
-            if request.form['username'] == str(user) and \
-                    sha256_crypt.verify(request.form['password'], d_f.password[i]):
+            if await request.form['username'] == str(user) and \
+                    sha256_crypt.verify(await request.form['password'], d_f.password[i]):
                 session['logged_in'] = True
-                session['username'] = request.form['username']
+                session['username'] = await request.form['username']
                 flash('You are logged in as ' + str(user))
                 return redirect(url_for('preferences'))
         data = {
-            'username': request.form['username'],
-            'ip': [request.remote_addr],
+            'username': await request.form['username'],
+            'ip': [await request.remote_addr],
             'timestamp': [timestamp_str]
         }
         temp_df = pd.DataFrame(data)
         temp_df.to_csv(r'C:\capstone\templates\FailedLoginAttemptsLog.csv',
                        mode='a', index=False, header=False)
         flash("Invalid credentials. Try Again.")
-    return render_template('login.html')
+    return await render_template('login.html')
 
 
 def login_required(func):
@@ -176,7 +180,7 @@ def logout():
     Clear session, garbage collect and redirect user to the home page."""
     session.clear()
     flash("You have been logged out!")
-    gc.collect()
+    """gc.collect()"""
     return redirect(url_for('home_page'))
 
 
@@ -192,7 +196,7 @@ def change_password():
     the previously stored password. Then their new password will be compared
     to the CommonPasswords.csv file. If their new password doesn't match
     then it will be stored in the accounts.csv as the new password"""
-    form = ChangePassForm(request.form)
+    form = ChangePassForm(await request.form)
     current_user = session['username']
     print(current_user)
     if request.method == "POST" and form.validate():
@@ -206,7 +210,7 @@ def change_password():
                 for k in enumerate(c_p.Passwords):
                     if str(form.newpass.data) == str(k):
                         flash("Password is too easy. Try again")
-                        return render_template('change_password.html', form=form)
+                        return await render_template('change_password.html', form=form)
                 #data = {
                     #'username': [form.username.data],
                     #'password': [sha256_crypt.encrypt((str(form.newpass.data)))],
@@ -214,7 +218,9 @@ def change_password():
                     #}
                 #temp_df = pd.DataFrame(data)
                 #d_f.password[i].drop()
-                d_f.password[i] = sha256_crypt.encrypt((str(form.newpass.data)))
+                """sha256_crypt.encrypt is not an asynchronous function"""
+                d_f.password[i] = await sha256_crypt.hash((str(form.password.data)))
+
                 #d_f.drop([i,i]).to_csv
                 # (r'C:\capstone\templates\accountsTest.csv')
                 #print(d_f)
@@ -229,7 +235,7 @@ def change_password():
                 return redirect(url_for('home_page'))
         # if count == len(d_f.username):
         # flash("Invalid credentials. Try Again.")
-    return render_template('change_password.html', form=form)
+    return await render_template('change_password.html', form=form)
 
 
 @app.route('/Preferences.html', methods=["GET", "POST"])
@@ -240,7 +246,7 @@ def preferences():
     :return:
     User will be able to enter zip code or city and state for
     which they would like to receive weather for."""
-    return render_template('Preferences.html', date=datetime.datetime.now())
+    return await render_template('Preferences.html', date=datetime.datetime.now())
 
 
 @app.route('/Contact.html', methods=["GET"])
@@ -249,16 +255,17 @@ def contact():
 
     :return:
     POCs will be placed in an unordered list."""
-    return render_template('Contact.html', date=datetime.datetime.now())
+    return await render_template('Contact.html', date=datetime.datetime.now())
 
 
 if __name__ == '__main__':
     app.secret_key = 'super secret key'
     # app.config['SESSION_TYPE'] = 'filesystem'
-
-    app.run(debug=True)
+    """remove the debug mode that is not supported by Vercel"""
+    app.run()
 
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('404.html')
+    return await render_template('404.html')
+

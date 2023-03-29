@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>WeatherWise</title>
+    <link href="main.css" rel="stylesheet" type="text/css">
+    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-image">
+        <header>
+            <ul class="navbar">
+                <li class="logo">WEATHERWISE</a></li>
+                <li><a href="#"><span class="menulogo"><img src="icons/rainy-fill.png" /></span></a></li>
+            </ul>
+        </header>
+        <div class="layout">
+            <div class="container-1">
+                <title class="title1">WEATHERWISE</title>
+                <title class="title2">Weather Forecast Notifier</title>
+            </div>
+            <div class="container-2">
+                <form action="" class="search">
+                    <div class="bg-searchbar">
+                        <input type="text" placeholder="Search City">
+                        <button type="submit"><img src="icons/search.png"></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="container-3">
+            <div class="weatherbox">
+                <div class="mainimage">
+                    <img src="icons/nclear.png">
+                </div>
+                <div class="mainweather">
+                    <h2 id="location"></h2>
+                    <h3 id="localDT"></h3>
+                    <div class="maintempdisplay">
+                        <h3 id="currentTemp"></h3>
+                        <h3 class="flabel">°F</h3>
+                        <h3 class="breaker">|</h3>
+                        <h3 id="attribute"></h3>
+                    </div>
+                </div>
+                <div class="favorites">
+                    <button class="favebutton" type="submit">Add to Favorites</button>
+                </div>
+            </div>
+        </div>
+        <div class="container-4">
+            <h2 class="weekfore"> Weekly Forecast</h2>
+        </div>
+        <div class="container-5">
+            <div class="box">
+                <h2>Tuesday</h2>
+                <img src="icons/mrain.png">
+                <h2 id="d1Temp"></h2>
+            </div>
+            <div class="box">
+                <h2>Wednesday</h2>
+                <img src="icons/mcloudy.png">
+                <h2 id="d2Temp"></h2>
+            </div>
+            <div class="box">
+                <h2>Thursday</h2>
+                <img src="icons/msunny.png">
+                <h2 id="d3Temp"></h2>
+            </div>
+            <div class="box">
+                <h2>Friday</h2>
+                <img src="icons/mrain.png">
+                <h2 id="d4Temp"></h2>
+            </div>
+            <div class="box">
+                <h2>Saturday</h2>
+                <img src="icons/mrain.png">
+                <h2 id="d5Temp"></h2>
+            </div>
+        </div>
+        <div class="container-5">
+            <div class="reminder">
+                <img class="drop" src="icons/drop.png">
+                <h3 id="message"></h3>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+
+</html>

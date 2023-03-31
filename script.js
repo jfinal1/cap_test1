@@ -45,6 +45,12 @@ var d5TempHigh = (weatherData.d5TempHigh);
 var d5TempLow = (weatherData.d5TempLow);
 var d5Attribute = (weatherData.d5Attribute);
 
+if ((weatherData.attribute).toString() == "Clear") {
+    var suggestion = "Don’t forget to wear a jacket!";
+}
+
+var message = "Reminder: " + suggestion;
+
 document.getElementById("location").innerHTML = city + ", " + state;
 document.getElementById("currentTemp").innerHTML = currentTemp;
 document.getElementById("attribute").innerHTML = attribute;
@@ -54,10 +60,4 @@ document.getElementById("d2Temp").innerHTML = d2TempHigh + "° | " + d2TempLow +
 document.getElementById("d3Temp").innerHTML = d3TempHigh + "° | " + d3TempLow + "°";
 document.getElementById("d4Temp").innerHTML = d4TempHigh + "° | " + d4TempLow + "°";
 document.getElementById("d5Temp").innerHTML = d5TempHigh + "° | " + d5TempLow + "°";
-
-if ((weatherData.attribute).toString() == "Clear") {
-    var suggestion = "Don’t forget to wear a jacket!";
-}
-
-var message = "Reminder: " + suggestion;
-console.log(message);
+document.getElementById("message").innerHTML = message;

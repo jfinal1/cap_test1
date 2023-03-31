@@ -34,11 +34,11 @@
 }
 
 .menulogo img {
+    margin-top: 10px;
     width: 20px;
 }
 
 .menulogo:hover {
-    box-shadow: 0px 0px 5px 2px #ffffff23;
     cursor: pointer;
     border: none;
     outline: none;
@@ -57,11 +57,9 @@
     overflow: hidden;
     padding: 20px;
     transition: all .50s ease;
-    position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    position: absolute;
 }
 
 .logo {
@@ -70,12 +68,57 @@
     color: #D0E3FF;
     letter-spacing: 2px;
     font-size: 13px;
+    margin-top: 10px;
 }
 
 .container-1 {
     display: flex;
     flex-direction: column;
     align-content: center;
+}
+
+.submenu {
+    display: none;
+}
+
+.submenu a {
+    color: white;
+}
+
+a:active {
+    color: #1F4B8B;
+}
+
+a[tabindex]:focus {
+    color: #1F4B8B;
+    outline: none;
+}
+
+
+li:hover .submenu {
+    display: block;
+    position: fixed;
+    background: #19191F;
+    margin-top: 30px;
+    margin-left: -45px;
+
+}
+
+li:hover .submenu ul {
+    display: block;
+    margin: 20px;
+    margin-right: 110px;
+    color: white;
+}
+
+li:hover .submenu li {
+    padding: 5px;
+    text-decoration: #D0E3FF;
+    border-bottom: 1px dotted #D0E3FF;
+    opacity: 0.7;
+    border-radius: 0;
+    width: 150px;
+
 }
 
 .title1 {
@@ -124,8 +167,11 @@
     height: 40px;
     margin: 10px;
     margin-right: 0;
+    padding-left: 5px;
     background: rgba(182, 182, 250, 0.6);
     border-radius: 15px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
     border-right: 0;
     border-left: 0;
     outline: none;
@@ -150,7 +196,9 @@
     width: 40px;
     height: 38px;
     background: rgba(182, 182, 250, 0.6);
-    border-radius: 0px, 15px, 15px, 0px;
+    border-radius: 15px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
     border: 2px rgba(182, 182, 250, 0.6);
 }
 
@@ -315,9 +363,10 @@
 .reminder {
     display: flex;
     align-content: center;
+    margin: 0;
     margin-top: 20px;
     margin-bottom: 60px;
-    width: 565px;
+    width: 600px;
     height: 53px;
     background: rgba(182, 182, 250, 0.6);
     opacity: 0.6;
@@ -328,12 +377,11 @@
     display: flex;
     align-self: center;
     justify-content: center;
-    width: 420px;
+    width: 500px;
     height: 19px;
     font-weight: 700;
     font-size: 16px;
     line-height: 19px;
-    text-align: center;
     letter-spacing: 0.1em;
     color: #FFFFFF;
     opacity: 0.7;
@@ -341,8 +389,9 @@
 
 .drop {
     display: flex;
-    margin-left: 40px;
-    margin-top: 15px;
+    align-self: center;
+    justify-content: center;
     width: 20px;
     height: 20px;
+    margin-left: 40px;
 }
